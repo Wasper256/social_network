@@ -13,6 +13,7 @@ django-allauth = "*"
 dj-database-url = "*"
 psycopg2-binary = "*"
 django-rest-auth = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.7"
@@ -22,5 +23,6 @@ migrate = "python manage.py migrate"
 makemigrations = "python manage.py makemigrations"
 server = "python manage.py runserver"
 createsuperuser = "python manage.py createsuperuser"
-loaddata = "python manage.py loaddata"
-shell = "python manage.py shell_plus"
+shell = "python manage.py shell"
+collectstatic = "python manage.py collectstatic --no-input"
+
