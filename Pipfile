@@ -14,6 +14,7 @@ dj-database-url = "*"
 psycopg2-binary = "*"
 django-rest-auth = "*"
 ipython = "*"
+pyhunter = "*"
 
 [requires]
 python_version = "3.7"
@@ -25,4 +26,3 @@ server = "python manage.py runserver"
 createsuperuser = "python manage.py createsuperuser"
 shell = "python manage.py shell"
 collectstatic = "python manage.py collectstatic --no-input"
-
