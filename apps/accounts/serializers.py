@@ -11,9 +11,9 @@ class UserSerializer(RegisterSerializer):
     last_name = serializers.CharField()
     email = serializers.EmailField()
     username = serializers.CharField()
-    phone_number = serializers.CharField()
+    phone_number = serializers.CharField(required=False)
     date_of_birth = serializers.DateField()
-    address = serializers.CharField()
+    address = serializers.CharField(required=False)
 
     def get_cleaned_data(self):
         return {

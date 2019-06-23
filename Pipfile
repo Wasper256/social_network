@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 django-rest-auth = "*"
 ipython = "*"
 pyhunter = "*"
+django-filters = "*"
 
 [requires]
 python_version = "3.7"

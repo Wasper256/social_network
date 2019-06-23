@@ -20,6 +20,7 @@ class CreateUserView(RegisterView):
         # verify the deliverability of an email address
         hunter = PyHunter(settings.EMAIL_HUNTER_API_KEY)
         verify = hunter.email_verifier(email)
+        print(verify)
         if not verify['gibberish'] and not verify['block']:
             user = self.perform_create(serializer)
             headers = self.get_success_headers(serializer.data)
