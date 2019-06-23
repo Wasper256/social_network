@@ -9,6 +9,7 @@ git clone git@github.com:Wasper256/social_network.git
 ```
 DATABASE_URL=postgres://network_db:pass@localhost/network_db
 
+# Bot config
 NUMBER_OF_USERS=3
 MAX_POSTS_PER_USER=3
 MAX_LIKES_PER_USER=3
