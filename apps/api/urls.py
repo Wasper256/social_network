@@ -2,7 +2,6 @@ from django.urls import path, include
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 from apps.accounts import views as auth_views
-from .routers import router
 
 app_name = 'api'
 

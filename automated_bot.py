@@ -79,6 +79,7 @@ def main():
         posts_list = get_posts_list(token)
         for k in range(random.randrange(0, max_likes_per_user)):
             create_likes(token, posts_list)
+    print("Job is finished!")
 
 
 

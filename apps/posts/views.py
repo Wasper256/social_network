@@ -20,12 +20,9 @@ class LikeView(views.APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
-        print(args, kwargs)
-        print(request.data["like"])
         obj = get_object_or_404(Post, pk=kwargs["post_id"])
         user = self.request.user
         if request.data["like"] == "True":
-            print("like")
             if user in obj.dislikes.all():
                 obj.dislikes.remove(user)
                 obj.likes.add(user)
@@ -34,7 +31,6 @@ class LikeView(views.APIView):
             else:
                 obj.likes.add(user)
         elif request.data["like"] == "False":
-            print("dislike")
             if user in obj.likes.all():
                 obj.dislikes.add(user)
                 obj.likes.remove(user)

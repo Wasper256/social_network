@@ -4,24 +4,27 @@ from rest_auth.registration.views import RegisterView
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-
+from requests.exceptions import HTTPError
 from .serializers import UserSerializer
 
 
 class CreateUserView(RegisterView):
     serializer_class = UserSerializer
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.validated_data['email']
 
-        # verify the deliverability of an email address
+        # verify email address
         hunter = PyHunter(settings.EMAIL_HUNTER_API_KEY)
-        verify = hunter.email_verifier(email)
-        print(verify)
-        if not verify['gibberish'] and not verify['block']:
+        verify = {}
+        try:
+            verify = hunter.email_verifier(email)
+        except HTTPError:
+            print("Email is not verified due to hunter limit!")
+        if not verify or (not verify['gibberish'] and not verify['block']):
             user = self.perform_create(serializer)
             headers = self.get_success_headers(serializer.data)
 

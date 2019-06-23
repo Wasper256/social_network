@@ -124,7 +124,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -139,19 +138,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        #     'rest_framework.authentication.TokenAuthentication',
     ),
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    #     'rest_framework.authentication.BasicAuthentication',
-    #     'rest_framework.authentication.SessionAuthentication',
-    #     'rest_framework.authentication.TokenAuthentication',
-    # ),
-    # 'DEFAULT_FILTER_BACKENDS': (
-    #     'django_filters.rest_framework.DjangoFilterBackend',
-    # ),
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    # 'PAGE_SIZE': 10
 }
 
 REST_USE_JWT = True
@@ -170,9 +157,6 @@ SITE_ID = 1
 EMAIL_HUNTER_API_KEY = '195b772a0feebba710577cdb2054f2f01e611483'
 
 AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    # "django.contrib.auth.backends.ModelBackend",
-    # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
