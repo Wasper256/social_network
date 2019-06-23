@@ -1,6 +1,6 @@
-Test task - social_network
+# Test task - social_network
 ---
-###How to install and use guide:
+### Quick Start:
 1. Clone the repo:
 ```
 git clone git@github.com:Wasper256/social_network.git
