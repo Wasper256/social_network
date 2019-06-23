@@ -45,9 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
-    'rest_auth.registration',
-    
+
     # My apps
     'apps.accounts.apps.AccountsConfig',
     'apps.posts.apps.PostsConfig',
@@ -156,9 +154,9 @@ SITE_ID = 1
 
 EMAIL_HUNTER_API_KEY = '195b772a0feebba710577cdb2054f2f01e611483'
 
-AUTHENTICATION_BACKENDS = (
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
+# AUTHENTICATION_BACKENDS = (
+#     "allauth.account.auth_backends.AuthenticationBackend",
+# )
 
 # Rest Auth Settings
 

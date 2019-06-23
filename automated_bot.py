@@ -1,8 +1,8 @@
-import requests
+import json
 import os
 import random
-import json
 
+import requests
 
 BASE_URL = users = os.environ.get("BASE_URL", "http://127.0.0.1:8000/api/v1")
 
@@ -62,7 +62,7 @@ def get_posts_list(token):
 def create_likes(token, posts_list):
     url = BASE_URL + '/like_post/' + str(random.choice(posts_list)) + "/"
     payload = {
-        "like": True
+        "like": True  # If there are need to test dislikes - change to False
     }
     requests.request("POST", url, data=json.dumps(payload),
                      headers={"Content-Type": "application/json",
@@ -80,7 +80,6 @@ def main():
         for k in range(random.randrange(0, max_likes_per_user)):
             create_likes(token, posts_list)
     print("Job is finished!")
-
 
 
 if __name__ == '__main__':

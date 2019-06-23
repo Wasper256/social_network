@@ -5,8 +5,8 @@ from .models import Post
 
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.CharField(source='author.username', read_only=True)
-    likes = serializers.SerializerMethodField()
-    dislikes = serializers.SerializerMethodField()
+    likes = serializers.SerializerMethodField(allow_null=True)
+    dislikes = serializers.SerializerMethodField(allow_null=True)
 
     class Meta:
         model = Post
@@ -19,4 +19,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_dislikes(obj):
-        return obj.likes.count()
+        return obj.dislikes.count()

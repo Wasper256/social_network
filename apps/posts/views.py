@@ -1,10 +1,10 @@
-from .models import Post
-from .serializers import PostSerializer
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, views, status
 from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 
+from .models import Post
+from .serializers import PostSerializer
 
 
 class PostListCreateView(generics.ListCreateAPIView):
@@ -15,14 +15,14 @@ class PostListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+
 class LikeView(views.APIView):
-    # serializer_class = PostSerializer
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
         obj = get_object_or_404(Post, pk=kwargs["post_id"])
         user = self.request.user
-        if request.data["like"] == "True":
+        if request.data["like"]:
             if user in obj.dislikes.all():
                 obj.dislikes.remove(user)
                 obj.likes.add(user)
@@ -30,7 +30,7 @@ class LikeView(views.APIView):
                 pass
             else:
                 obj.likes.add(user)
-        elif request.data["like"] == "False":
+        elif not request.data["like"]:
             if user in obj.likes.all():
                 obj.dislikes.add(user)
                 obj.likes.remove(user)
